@@ -3,17 +3,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Output = void 0;
 const vscode = require("vscode");
 const channel = vscode.window.createOutputChannel('zt_dev_tools');
-function Output(str, level) {
+async function Output(str, level) {
     if (level) {
         switch (level) {
             case 'warn':
-                vscode.window.showWarningMessage(str);
+                await vscode.window.showWarningMessage(str);
                 break;
             case 'info':
-                vscode.window.showInformationMessage(str);
+                await vscode.window.showInformationMessage(str);
                 break;
             case 'error':
-                vscode.window.showErrorMessage(str);
+                await vscode.window.showErrorMessage(str);
                 break;
         }
     }

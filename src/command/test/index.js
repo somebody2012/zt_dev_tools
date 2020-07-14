@@ -2,14 +2,14 @@ import db from "../../db/index";
 import vscode ,{ StatusBarItem, window, StatusBarAlignment } from "vscode";
 // import MyTreeProvider from "./TreeDataProvoder.js"
 import {Output} from "../../comm/logger";
+import { stat } from "fs";
 
 
 
-
-export default async function active(context,cmdParams){
+export default async function active(params){
   let res = await db.query("SELECT * FROM PRODUCTS");
   vscode.window.showInformationMessage(JSON.stringify(res));
-  Output("-----1------");
+  Output(JSON.stringify(res));
 
   // let inpRes1 = await vscode.window.showInputBox({
   //   ignoreFocusOut: true,
@@ -60,14 +60,14 @@ export default async function active(context,cmdParams){
   // });
   // panel.webview.html = `<html><div style="color:red;">sdfsdfsdfsdf</div></html>`;
 
-  vscode.window.showErrorMessage("错误")
-
-  let statusBarItem = window.createStatusBarItem(StatusBarAlignment.Right, 200);
+  // let statusBarItem = window.createStatusBarItem(StatusBarAlignment.Right, 200);
   
-  statusBarItem.text = `text`;
-  statusBarItem.tooltip = 'In case if it takes long time, try to close all browser window.';
-  statusBarItem.command = "zt-dev-tools.helloWorld";
-  statusBarItem.show();
+  // statusBarItem.text = `text`;
+  // statusBarItem.tooltip = 'In case if it takes long time, try to close all browser window.';
+  // statusBarItem.command = "zt-dev-tools.helloWorld";
+  // statusBarItem.show();
+
+
 
   
 

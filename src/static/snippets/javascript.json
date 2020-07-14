@@ -2,7 +2,7 @@
   "console.log()":{
     "prefix": "cl",
     "body": [
-        "console.log({${1:Object}});$0"
+        "console.log(${1:参数});$0"
     ]
   }
 }

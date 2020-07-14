@@ -1,11 +1,9 @@
 import * as path from "path";
 import * as vscode from 'vscode';
-import { Output } from './logger';
 
 var context: vscode.ExtensionContext;
 
 export function setContext(c: vscode.ExtensionContext) {
-    Output('set context')
     context = c;
 }
 

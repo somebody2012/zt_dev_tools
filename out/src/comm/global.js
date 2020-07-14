@@ -2,10 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getGlobalState = exports.getSubscriptions = exports.getExtensionPath = exports.setContext = void 0;
 const path = require("path");
-const logger_1 = require("./logger");
 var context;
 function setContext(c) {
-    logger_1.Output('set context');
     context = c;
 }
 exports.setContext = setContext;
