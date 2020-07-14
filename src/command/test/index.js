@@ -4,9 +4,15 @@ import vscode ,{ StatusBarItem, window, StatusBarAlignment } from "vscode";
 import {Output} from "../../comm/logger";
 import { stat } from "fs";
 
-
+vscode.workspace.onDidChangeConfiguration(function(event) {
+  let affected = event.affectsConfiguration("name");
+  Output(`name changeed`)
+});
 
 export default async function active(params){
+
+  vscode.workspace.getConfiguration().update("name","tom",true);
+
   let res = await db.query("SELECT * FROM PRODUCTS");
   vscode.window.showInformationMessage(JSON.stringify(res));
   Output(JSON.stringify(res));
@@ -67,7 +73,25 @@ export default async function active(params){
   // statusBarItem.command = "zt-dev-tools.helloWorld";
   // statusBarItem.show();
 
+  // vscode.window.showErrorMessage(`与starling的远程交互依赖vscode-starling.sid配置项`, '打开配置项').then(selection => {
+  //   if (selection === '打开配置项') {
+  //     vscode.commands.executeCommand('workbench.action.openSettings');
+  //   }
+  // });
 
+  // const uri = await vscode.window.showSaveDialog({
+  //   filters: {
+  //     zip: ['zip'], // 文件类型过滤
+  //   },
+  // });
+
+  // const uris = await window.showOpenDialog({
+  //   canSelectFolders: false, // 是否可以选择文件夹
+  //   canSelectMany: false, // 是否可以选择多个文件
+  //   filters: {
+  //     json: ['json'], // 文件类型过滤
+  //   },
+  // });
 
   
 
