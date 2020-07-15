@@ -10,6 +10,7 @@ vscode.workspace.onDidChangeConfiguration(function(event) {
 });
 
 export default async function active(params){
+  
 
   vscode.workspace.getConfiguration().update("name","tom",true);
 
@@ -93,7 +94,20 @@ export default async function active(params){
   //   },
   // });
 
-  
+  const activeTextEditor = vscode.window.activeTextEditor;
+  // const activeDocument = activeTextEditor.document;
+
+  // // 1. 获取所有选中行信息
+  // const selection = activeTextEditor.selection;
+  // // sample for selection: {"start":{"line":2,"character":0},"end":{"line":2,"character":7},"active":{"line":2,"character":7},"anchor":{"line":2,"character":0}}
+  // const { start, end } = selection;
+
+  // Output(JSON.stringify(selection))
+
+  // const insertPositon = new vscode.Position(1, 0);
+  // activeTextEditor.edit((TextEditorEdit) => {
+  //   TextEditorEdit.insert(insertPositon, `console.log(111);\n`);
+  // });
 
 }
 
