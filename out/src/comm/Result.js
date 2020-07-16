@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Result = void 0;
 class Result {
     constructor(params) {
         this.isSuccess = params.isSuccess;
@@ -7,25 +8,26 @@ class Result {
         this.data = params.data;
         this.message = params.message;
     }
-    static success(params) {
+    static success(message, data) {
         return new Result({
             isSuccess: true,
             errorCode: "0000",
-            data: params.data || null,
-            message: params.message || "成功"
+            data: data || null,
+            message: message || "成功"
         });
     }
-    static fail(params) {
+    static fail(message, data) {
         return new Result({
             isSuccess: false,
             errorCode: "9999",
-            data: params.data || null,
-            message: params.message || "失败",
+            data: data || null,
+            message: message || "失败",
         });
     }
     static create(params) {
         return new Result(params);
     }
 }
+exports.Result = Result;
 exports.default = Result;
 //# sourceMappingURL=Result.js.map

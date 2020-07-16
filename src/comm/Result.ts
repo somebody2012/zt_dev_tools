@@ -1,6 +1,6 @@
 
 import {ResultType} from "../types/common.d"
-export default class Result{
+export class Result{
   isSuccess:boolean;
   errorCode:string;
   data:any;
@@ -11,23 +11,29 @@ export default class Result{
     this.data = params.data;
     this.message = params.message;
   }
-  static success(params){
+  static success(message?:any,data?:any){
     return new Result({
       isSuccess:true,
       errorCode:"0000",
-      data:params.data||null,
-      message:params.message||"成功"
+      data:data||null,
+      message:message||"成功"
     });
   }
-  static fail(params){
+  static fail(message?:any,data?:any){
     return new Result({
       isSuccess:false,
       errorCode:"9999",
-      data:params.data||null,
-      message:params.message||"失败",
+      data:data||null,
+      message:message||"失败",
     });
   }
   static create(params:ResultType){
     return new Result(params);
   }
+}
+
+export default Result;
+
+export {
+  ResultType
 }
