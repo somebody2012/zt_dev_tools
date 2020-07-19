@@ -22,6 +22,7 @@ function getBuildPath(path:string){
   })
 }
 export default async function buildTrade({path}){
+  vscode.workspace.saveAll()
   let isFile = fs.statSync(path).isFile();
   let isDir = fs.statSync(path).isDirectory();
   let buildSrc = path.split(/\//);

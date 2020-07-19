@@ -10,13 +10,15 @@ export const HOVER_SELECTOR:Array<vscode.DocumentFilter> = [
   }
 ]
 export class Hover implements vscode.HoverProvider{
-  provideHover(_document: vscode.TextDocument,_position: vscode.Position,_token: vscode.CancellationToken): vscode.ProviderResult<vscode.Hover> {
+   provideHover(_document: vscode.TextDocument,_position: vscode.Position,_token: vscode.CancellationToken): vscode.ProviderResult<vscode.Hover> {
     const args = [{ resourceUri: _document.uri }];
     const stageCommandUri = vscode.Uri.parse(
       `file:///Users/apple/web/vscode/zt-dev-tools/.eslintrc.json`
     );
-    const contents = new vscode.MarkdownString(vscode.env.appRoot);
+    const contents = new vscode.MarkdownString(vscode.env.shell);
     contents.isTrusted = true;
+    let a = vscode.workspace.textDocuments
+    
     return new vscode.Hover(contents);
   }
 }

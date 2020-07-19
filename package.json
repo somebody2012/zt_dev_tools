@@ -25,6 +25,10 @@
       {
         "command": "zt-dev-tools.build:trade",
         "title": "build:trade"
+      },
+      {
+        "command": "zt-dev-tools.saveAll",
+        "title": "saveAll"
       }
     ],
     "menus": {
@@ -58,6 +62,12 @@
           "description": "名字"
         }
       }
+    },
+    "keybindings":{
+      "command": "zt-dev-tools.saveAll",
+      "key": "ctrl+s",
+      "mac": "cmd+s",
+      "when": "editorTextFocus"
     }
   },
   "scripts": {
