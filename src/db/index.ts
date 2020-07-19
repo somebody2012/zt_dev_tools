@@ -37,7 +37,7 @@ let getConnectionPool = function(){
       database        : globalConfig.database
     });
   }
-  return Result.success({data:pool});
+  return Result.success("创建连接池成功",pool);
 }
 
 
@@ -71,7 +71,7 @@ function query(sqlStr,values=[]){
 function queryOfPool(sqlStr,values=[]){
   return new Promise(async (resolve,reject) => {
     if(!sqlStr){
-      resolve(Result.fail({message:"参数错误"}));
+      resolve(Result.fail("参数错误"));
       return;
     }
     let res = await getConnectionPool();
@@ -79,18 +79,15 @@ function queryOfPool(sqlStr,values=[]){
       let pool = res.data;
       pool.getConnection((err,connection) => {
         if(err){
-          resolve(Result.fail({message:err.message})); 
+          resolve(Result.fail(err.message)); 
         }else{
           connection.query.call(connection,sqlStr,values,function(error,results,fields){
             if(error){
               connection.release();
-              resolve(Result.fail({message:error.message}));
+              resolve(Result.fail(error.message));
             }else{
               connection.release();
-              resolve(Result.success({
-                data:results,
-                message:"成功"
-              }));
+              resolve(Result.success("成功",results));
             }
           });
         }

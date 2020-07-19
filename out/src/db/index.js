@@ -38,7 +38,7 @@ let getConnectionPool = function () {
             database: globalConfig_1.default.database
         });
     }
-    return Result_1.default.success({ data: pool });
+    return Result_1.default.success("创建连接池成功", pool);
 };
 function query(sqlStr, values = []) {
     return new Promise(async (resolve, reject) => {
@@ -71,7 +71,7 @@ function query(sqlStr, values = []) {
 function queryOfPool(sqlStr, values = []) {
     return new Promise(async (resolve, reject) => {
         if (!sqlStr) {
-            resolve(Result_1.default.fail({ message: "参数错误" }));
+            resolve(Result_1.default.fail("参数错误"));
             return;
         }
         let res = await getConnectionPool();
@@ -79,20 +79,17 @@ function queryOfPool(sqlStr, values = []) {
             let pool = res.data;
             pool.getConnection((err, connection) => {
                 if (err) {
-                    resolve(Result_1.default.fail({ message: err.message }));
+                    resolve(Result_1.default.fail(err.message));
                 }
                 else {
                     connection.query.call(connection, sqlStr, values, function (error, results, fields) {
                         if (error) {
                             connection.release();
-                            resolve(Result_1.default.fail({ message: error.message }));
+                            resolve(Result_1.default.fail(error.message));
                         }
                         else {
                             connection.release();
-                            resolve(Result_1.default.success({
-                                data: results,
-                                message: "成功"
-                            }));
+                            resolve(Result_1.default.success("成功", results));
                         }
                     });
                 }

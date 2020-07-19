@@ -13,7 +13,6 @@ export default async function active(params){
   
 
   vscode.workspace.getConfiguration().update("name","tom",true);
-
   let res = await db.query("SELECT * FROM PRODUCTS");
   vscode.window.showInformationMessage(JSON.stringify(res));
   Output(JSON.stringify(res));

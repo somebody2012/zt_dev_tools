@@ -8,7 +8,7 @@ export function execThenable(command,cwd):Promise<ResultType>{
       cwd:cwd,
       encoding:"utf-8",
       stdio:[process.stdin,process.stdout,process.stderr],
-      shell:"D:\\Program Files\\Git\\bin\\bash.exe"
+      // shell:"D:\\Program Files\\Git\\bin\\bash.exe"
       // shell:env.SHEEL_PATH
     };
     let res = exec(command,options,function(err:ExecException|null,stdo:string|Buffer,stde:string|Buffer){

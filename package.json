@@ -27,6 +27,14 @@
         "title": "build:trade"
       }
     ],
+    "menus": {
+      "explorer/context":[
+        {
+          "command":"zt-dev-tools.build:trade",
+          "group":"navigation"
+        }
+      ]
+    },
     "snippets": [
       {
         "language": "javascript",
