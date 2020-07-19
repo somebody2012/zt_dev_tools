@@ -18,6 +18,8 @@ export class Hover implements vscode.HoverProvider{
     const contents = new vscode.MarkdownString(vscode.env.shell);
     contents.isTrusted = true;
     let a = vscode.workspace.textDocuments
+
+    // _document.getText(new vscode.Range(new vscode.Position()))
     
     return new vscode.Hover(contents);
   }
