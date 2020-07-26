@@ -11,6 +11,8 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(vscode.commands.registerCommand('zt-dev-tools.build:trade',buildTrade));
 	vscode.languages.registerHoverProvider(HOVER_SELECTOR,new Hover());
 	context.subscriptions.push(vscode.commands.registerCommand("zt-dev-tools.saveAll",saveAll))
-}
 
+
+
+}
 export function deactivate() {}

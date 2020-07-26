@@ -15,11 +15,14 @@ export class Hover implements vscode.HoverProvider{
     const stageCommandUri = vscode.Uri.parse(
       `file:///Users/apple/web/vscode/zt-dev-tools/.eslintrc.json`
     );
-    const contents = new vscode.MarkdownString(vscode.env.shell);
-    contents.isTrusted = true;
+    
     let a = vscode.workspace.textDocuments
 
     // _document.getText(new vscode.Range(new vscode.Position()))
+    let b = _document.lineAt(_position.line)
+
+    const contents = new vscode.MarkdownString(b.text);
+    contents.isTrusted = true;
     
     return new vscode.Hover(contents);
   }

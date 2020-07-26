@@ -21,3 +21,9 @@ export function execThenable(command,cwd):Promise<ResultType>{
     });
   });
 }
+
+export function sleep(time:number=0):Promise<void>{
+  return new Promise((resolve,reject)=>{
+    setTimeout(() => resolve(),time)
+  });
+}
