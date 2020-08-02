@@ -8,7 +8,14 @@ let rootApp = new Vue({
   data: function() {
     return {
       msgResolvers:[],//{msgType:"",data:{}}
-      name:""
+      config:{
+        mysql:[
+          {label:"主机",fieldName:"mysql.host",value:""},
+          {label:"数据库名称",fieldName:"mysql.database",value:""},
+          {label:"用户名",fieldName:"mysql.user",value:""},
+          {label:"密码",fieldName:"mysql.password",value:""},
+        ]
+      }
     }
   },
   methods:{
@@ -36,8 +43,19 @@ let rootApp = new Vue({
       }
     },
     initFrame(data){
-      this.name = data.name
+      this.config = data.config
     },
+    async saveAllConfig(){
+      let res = await this.send({
+        type:"refresh",
+        config:this.config
+      })
+      this.$message({type:"success",message:"更新配置成功"});
+    },
+
+
+
+
     async sendmsg(){
       let res = await this.send({
         type:"refresh",
@@ -45,7 +63,8 @@ let rootApp = new Vue({
         b:2
       })
       this.$alert(JSON.stringify(res.data))
-    }
+    },
+
 
 
 

@@ -5,6 +5,7 @@ import {getExtensionPath,getGlobalState} from "../../comm/global"
 import * as utils from "../../comm/index"
 import * as ejs from "ejs";
 import {reciveRefreshMsg} from "./reciveRefreshMsg"
+import initConfig from "./initConfig";
 
 
 
@@ -61,12 +62,9 @@ export async function tools(params){
   }
 
   await utils.sleep(2000);
-  let name = vscode.workspace.getConfiguration().get("name");
-  let initData = {
-    type:"initFrame",
-    name:name
-  };
-  panel.webview.postMessage(initData)
+
+  initConfig(panel.webview);
+
 
   
 

@@ -74,6 +74,26 @@
           "type": "string",
           "default": "jack",
           "description": "名字"
+        },
+        "mysql.host":{
+          "type":"string",
+          "default":"47.105.154.93",
+          "description": "mysql地址"
+        },
+        "mysql.user":{
+          "type":"string",
+          "default":"root",
+          "description": "mysql登录用户名"
+        },
+        "mysql.password":{
+          "type":"string",
+          "default":"Dr123456",
+          "description": "mysql密码"
+        },
+        "mysql.database":{
+          "type":"string",
+          "default":"DR",
+          "description": "mysql数据库名称"
         }
       }
     },
