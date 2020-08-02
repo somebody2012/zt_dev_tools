@@ -1,5 +1,5 @@
 {
-  "publisher":"diaoxr",
+  "publisher": "diaoxr",
   "name": "zt-dev-tools",
   "displayName": "zt_dev_tools",
   "description": "tools",
@@ -29,13 +29,27 @@
       {
         "command": "zt-dev-tools.saveAll",
         "title": "saveAll"
+      },
+      {
+        "command": "zt-dev-tools.tools",
+        "title": "tools",
+        "icon": {
+					"dark": "images/tool.png",
+					"light": "images/tool.png"
+				}
       }
     ],
     "menus": {
-      "explorer/context":[
+      "explorer/context": [
         {
-          "command":"zt-dev-tools.build:trade",
-          "group":"navigation"
+          "command": "zt-dev-tools.build:trade",
+          "group": "navigation"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "zt-dev-tools.tools",
+          "group": "navigation@-1"
         }
       ]
     },
@@ -53,17 +67,17 @@
         "path": "./src/static/snippets/vue.json"
       }
     ],
-    "configuration":{
+    "configuration": {
       "title": "zt_dev_tool_config",
       "properties": {
-        "name":{
-          "type":"string",
-          "default":"jack",
+        "name": {
+          "type": "string",
+          "default": "jack",
           "description": "名字"
         }
       }
     },
-    "keybindings":{
+    "keybindings": {
       "command": "zt-dev-tools.saveAll",
       "key": "ctrl+s",
       "mac": "cmd+s",
@@ -79,7 +93,7 @@
     "test": "node ./out/test/runTest.js",
     "pro": "webpack --mode production",
     "dev": "webpack --mode development --watch",
-    "package":"vsce package"
+    "package": "vsce package"
   },
   "devDependencies": {
     "@types/glob": "^7.1.1",
@@ -97,6 +111,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "babel-loader": "^8.1.0",
+    "ejs": "^3.1.3",
     "fs-extra": "^9.0.1",
     "mysql": "^2.18.1",
     "node-xlsx": "^0.15.0",
